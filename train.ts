@@ -1,3 +1,5 @@
+
+
 function reverseInteger(num: number): number {
 	const reversedString = Math.abs(num).toString().split('').reverse().join('');
 
