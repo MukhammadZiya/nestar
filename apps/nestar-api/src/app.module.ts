@@ -9,6 +9,8 @@ import { ComponentsModule } from './components/components.module';
 import { DatabaseModule } from './database/database.module';
 import { T } from './libs/types/common';
 
+console.log("passed 3")
+
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
@@ -34,3 +36,5 @@ import { T } from './libs/types/common';
 	providers: [AppService, AppResolver],
 })
 export class AppModule {}
+
+console.log("passed 2")
