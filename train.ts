@@ -22,23 +22,23 @@
 
 // console.log(rotateArray([1, 2, 3, 4, 5, 6], 3));
 
-function areArraysEqual(arr1: number[], arr2: number[]): boolean {
-	if (arr1.length !== arr2.length) {
-		return false;
-	}
+// function areArraysEqual(arr1: number[], arr2: number[]): boolean {
+// 	if (arr1.length !== arr2.length) {
+// 		return false;
+// 	}
 
-	arr1.sort();
-	arr2.sort();
+// 	arr1.sort();
+// 	arr2.sort();
 
-	for (let i = 0; i < arr1.length; i++) {
-		if (arr1[i] !== arr2[i]) {
-			return false;
-		}
-	}
+// 	for (let i = 0; i < arr1.length; i++) {
+// 		if (arr1[i] !== arr2[i]) {
+// 			return false;
+// 		}
+// 	}
 
-	return true;
-}
+// 	return true;
+// }
 
-console.log(areArraysEqual([1, 2, 3], [3, 1, 2]));
-console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1]));
-console.log(areArraysEqual([1, 2, 3], [4, 1, 2]));
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2]));
+// console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1]));
+// console.log(areArraysEqual([1, 2, 3], [4, 1, 2]));
