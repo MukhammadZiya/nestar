@@ -30,6 +30,7 @@ export class RolesGuard implements CanActivate {
 
 			console.log('memberNick[roles] =>', authMember.memberNick);
 			request.body.authMember = authMember;
+
 			return true;
 		}
 
