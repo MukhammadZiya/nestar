@@ -42,3 +42,24 @@
 // console.log(areArraysEqual([1, 2, 3], [3, 1, 2]));
 // console.log(areArraysEqual([1, 2, 3], [3, 1, 2, 1]));
 // console.log(areArraysEqual([1, 2, 3], [4, 1, 2]));
+
+// task-zq
+
+function findDuplicates(arr: number[]): number[] {
+	const countMap: { [key: number]: number } = {};
+	const duplicates: number[] = [];
+
+	for (const num of arr) {
+		countMap[num] = (countMap[num] || 0) + 1;
+	}
+
+	for (const num in countMap) {
+		if (countMap[num] > 1) {
+			duplicates.push(Number(num));
+		}
+	}
+
+	return duplicates;
+}
+
+console.log(findDuplicates([1, 2, 3, 4, 5, 4, 3, 4]));
