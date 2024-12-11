@@ -67,17 +67,30 @@
 
 //TASK-ZR 
 
-function countNumberAndLetters(input: string): { number: number, letter: number } {
-  let numberCount = 0;
-  let letterCount = 0;
+// function countNumberAndLetters(input: string): { number: number, letter: number } {
+//   let numberCount = 0;
+//   let letterCount = 0;
 
-  for (let char of input) {
-    if (/\d/.test(char)) numberCount++;
-    else if (/[a-zA-Z]/.test(char)) letterCount++;
-  }
+//   for (let char of input) {
+//     if (/\d/.test(char)) numberCount++;
+//     else if (/[a-zA-Z]/.test(char)) letterCount++;
+//   }
 
-  return { number: numberCount, letter: letterCount };
+//   return { number: numberCount, letter: letterCount };
+// }
+
+
+// console.log(countNumberAndLetters("string152%¥")); 
+
+
+//TASK-ZS 
+
+
+function singleNumber(nums: number[]): number {
+ 
+  return nums.reduce((acc, num) => acc ^ num, 0);
 }
 
 
-console.log(countNumberAndLetters("string152%¥")); 
+const result = singleNumber([4, 2, 1, 2, 1]);
+console.log(result); 
