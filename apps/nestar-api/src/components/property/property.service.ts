@@ -118,6 +118,7 @@ export class PropertyService {
 							lookupMember,
 							{ $unwind: '$memberData' },
 						],
+						metaCounter: [{ $count: 'total' }],
 					},
 				},
 			])
@@ -182,6 +183,7 @@ export class PropertyService {
 							lookupMember,
 							{ $unwind: '$memberData' },
 						],
+						metaCounter: [{ $count: 'total' }],
 					},
 				},
 			])
