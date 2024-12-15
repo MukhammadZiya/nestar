@@ -86,11 +86,27 @@
 //TASK-ZS 
 
 
-function singleNumber(nums: number[]): number {
+// function singleNumber(nums: number[]): number {
  
-  return nums.reduce((acc, num) => acc ^ num, 0);
+//   return nums.reduce((acc, num) => acc ^ num, 0);
+// }
+
+
+// const result = singleNumber([4, 2, 1, 2, 1]);
+// console.log(result); 
+
+
+// TASK - ZT 
+
+function firstUniqueCharIndex(input: string): number {
+  for (let i = 0; i < input.length; i++) {
+      if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
+          return i;
+      }
+  }
+  return -1;
 }
 
 
-const result = singleNumber([4, 2, 1, 2, 1]);
-console.log(result); 
+console.log(firstUniqueCharIndex("stamp")); 
+
