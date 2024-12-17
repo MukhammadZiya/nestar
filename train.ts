@@ -98,15 +98,33 @@
 
 // TASK - ZT 
 
-function firstUniqueCharIndex(input: string): number {
-  for (let i = 0; i < input.length; i++) {
-      if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
-          return i;
-      }
-  }
-  return -1;
+// function firstUniqueCharIndex(input: string): number {
+//   for (let i = 0; i < input.length; i++) {
+//       if (input.indexOf(input[i]) === input.lastIndexOf(input[i])) {
+//           return i;
+//       }
+//   }
+//   return -1;
+// }
+
+
+// console.log(firstUniqueCharIndex("stamp")); 
+
+
+
+//TASK -
+
+function stringToKebab(input: string): string {
+  return input
+    .trim() // 
+    .toLowerCase() 
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, ''); 
 }
 
 
-console.log(firstUniqueCharIndex("stamp")); 
+console.log(stringToKebab("I love Kebab")); 
+console.log(stringToKebab("  Hello World  "));
+console.log(stringToKebab("Convert THIS to kebab-case!")); 
+
 
