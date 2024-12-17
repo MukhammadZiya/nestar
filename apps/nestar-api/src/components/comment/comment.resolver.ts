@@ -51,5 +51,14 @@ export class CommentResolver {
     return await this.commentService.getComments(memberId, input);
   }
 
- 
+  //ADMIN  /
+
+  @Roles(MemberType.ADMIN)
+  @UseGuards(RolesGuard)
+  @Mutation((returns) => Comment)
+  public async removeCommentByAdmin(@Args('commentId') input: string): Promise<Comment> {
+    console.log('Mutation: updatePropertyByAdmin');
+    const commentId = shapeIntoMongoObjectId(input);
+    return await this.commentService.removeCommentByAdmin(commentId);
+  }
 }
