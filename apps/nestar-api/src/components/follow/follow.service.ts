@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Follower, Followers, Following } from '../../libs/dto/follow/follow';
+import { Follower, Followers, Following, Followings } from '../../libs/dto/follow/follow';
 import { Model, ObjectId } from 'mongoose';
 import { MemberService } from '../member/member.service';
 import { Direction, Message } from '../../libs/enums/common.enum';
@@ -23,13 +23,17 @@ export class FollowService {
 		if (!targetMember) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
 
 		const result = await this.registerSubscription(followerId, followingId);
+
+		await this.memberService.memberStatsEditor({ _id: followerId, targetKey: 'memberFollowings', modifier: 1 });
+		await this.memberService.memberStatsEditor({ _id: followingId, targetKey: 'memberFollowers', modifier: 1 });
+
 		return result;
 	}
 
-	private async registerSubscription(followerId: ObjectId, followingData: ObjectId): Promise<Follower> {
+	private async registerSubscription(followerId: ObjectId, followingId: ObjectId): Promise<Follower> {
 		try {
 			return await this.followModel.create({
-				followingId: followerId,
+				followingId: followingId,
 				followerId: followerId,
 			});
 		} catch (err) {
@@ -55,11 +59,10 @@ export class FollowService {
 		return result;
 	}
 
-	public async getMemberFollowings(memberId: ObjectId, input: FollowInquiry): Promise<Following> {
+	public async getMemberFollowings(memberId: ObjectId, input: FollowInquiry): Promise<Followings> {
 		const { page, limit, search } = input;
-		if (!search?.followerId) 
-			throw new InternalServerErrorException(Message.BAD_REQUEST);
-		
+		if (!search?.followerId) throw new InternalServerErrorException(Message.BAD_REQUEST);
+
 		const match: T = { followerId: search?.followerId };
 		console.log('match', match);
 
@@ -87,16 +90,16 @@ export class FollowService {
 			])
 			.exec();
 
+      if (!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
+
+
 		return result[0];
 	}
 
-
-
-  public async getMemberFollowers(memberId: ObjectId, input: FollowInquiry): Promise<Followers> {
+	public async getMemberFollowers(memberId: ObjectId, input: FollowInquiry): Promise<Followers> {
 		const { page, limit, search } = input;
-		if (!search?.followingId) 
-			throw new InternalServerErrorException(Message.BAD_REQUEST);
-		
+		if (!search?.followingId) throw new InternalServerErrorException(Message.BAD_REQUEST);
+
 		const match: T = { followingId: search?.followingId };
 		console.log('match', match);
 
@@ -124,8 +127,7 @@ export class FollowService {
 			])
 			.exec();
 
-
-      if(!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND)
+		if (!result.length) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
 
 		return result[0];
 	}
