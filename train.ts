@@ -114,17 +114,35 @@
 
 //TASK -
 
-function stringToKebab(input: string): string {
-  return input
-    .trim() // 
-    .toLowerCase() 
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, ''); 
+// function stringToKebab(input: string): string {
+//   return input
+//     .trim() // 
+//     .toLowerCase() 
+//     .replace(/[^a-z0-9]+/g, '-')
+//     .replace(/^-+|-+$/g, ''); 
+// }
+
+
+// console.log(stringToKebab("I love Kebab")); 
+// console.log(stringToKebab("  Hello World  "));
+// console.log(stringToKebab("Convert THIS to kebab-case!")); 
+
+
+//TASK 
+
+function areParenthesesBalanced(input: string): boolean {
+  let count = 0;
+
+  for (const char of input) {
+      if (char === '(') count++;
+      if (char === ')') count--;
+      if (count < 0) return false; 
+  }
+
+  return count === 0; 
 }
 
 
-console.log(stringToKebab("I love Kebab")); 
-console.log(stringToKebab("  Hello World  "));
-console.log(stringToKebab("Convert THIS to kebab-case!")); 
-
+console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
+console.log(areParenthesesBalanced("(nobalans)ko'rinish)")); 
 
