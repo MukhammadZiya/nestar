@@ -130,19 +130,33 @@
 
 //TASK 
 
-function areParenthesesBalanced(input: string): boolean {
-  let count = 0;
+// function areParenthesesBalanced(input: string): boolean {
+//   let count = 0;
 
-  for (const char of input) {
-      if (char === '(') count++;
-      if (char === ')') count--;
-      if (count < 0) return false; 
-  }
+//   for (const char of input) {
+//       if (char === '(') count++;
+//       if (char === ')') count--;
+//       if (count < 0) return false; 
+//   }
 
-  return count === 0; 
+//   return count === 0; 
+// }
+
+
+// console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
+// console.log(areParenthesesBalanced("(nobalans)ko'rinish)")); 
+
+
+//TASK 
+
+function sumOfUnique(numbers: number[]): number {
+  return numbers
+      .filter(num => numbers.indexOf(num) === numbers.lastIndexOf(num)) // Filter unique numbers
+      .reduce((sum, num) => sum + num, 0); // Sum them up
 }
 
-
-console.log(areParenthesesBalanced("string()ichida(qavslar)soni()balansda")); 
-console.log(areParenthesesBalanced("(nobalans)ko'rinish)")); 
+// Example usage
+console.log(sumOfUnique([1, 2, 3, 2])); // Output: 4
+console.log(sumOfUnique([4, 5, 7, 5, 4, 8])); // Output: 15
+console.log(sumOfUnique([10, 10, 10])); // Output: 0
 
