@@ -199,17 +199,15 @@ export class AgentPropertiesInquiry {
 	search: APISearch;
 }
 
-
-
 @InputType()
 class ALPISearch {
 	@IsOptional()
 	@Field(() => PropertyStatus, { nullable: true })
 	propertyStatus?: PropertyStatus;
 
-	@IsOptional ()
-	@Field(() => [PropertyLocation], {nullable:true})
-	propertyLocationList? : PropertyLocation[] 
+	@IsOptional()
+	@Field(() => [PropertyLocation], { nullable: true })
+	propertyLocationList?: PropertyLocation[];
 }
 
 @InputType()
@@ -236,4 +234,17 @@ export class AllPropertiesInquiry {
 	@IsNotEmpty()
 	@Field(() => ALPISearch)
 	search: ALPISearch;
+}
+
+@InputType()
+export class OrdinaryInquiry {
+	@IsNotEmpty()
+	@Min(1)
+	@Field(() => Int)
+	page: number;
+
+	@IsNotEmpty()
+	@Min(1)
+	@Field(() => Int)
+	limit: number;
 }
