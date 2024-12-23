@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { DatabaseModule } from './database/database.module';
 import { T } from './libs/types/common';
 import { CommentResolver } from './comments/comment/comment.resolver';
+import { SocketModule } from './socket/socket.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import { CommentResolver } from './comments/comment/comment.resolver';
 		}),
 		ComponentsModule,
 		DatabaseModule,
+		SocketModule,
 	],
 	controllers: [AppController],
 	providers: [AppService, AppResolver, CommentResolver],
