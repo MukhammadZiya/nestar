@@ -169,6 +169,12 @@ public async getFavorites(memberId: ObjectId, input: OrdinaryInquiry):Promise<Pr
 }
 
 
+public async getVisited(memberId: ObjectId, input: OrdinaryInquiry):Promise<Properties> {
+	return await this.viewService.getVisitedProperties(memberId,input)
+}
+
+
+
 
 
 
